@@ -59,7 +59,7 @@ const Signin = () => {
                   placeholder="email"
                   className="input input-bordered"
                   required
-                  {...register("password")}
+                  {...register("email")}
                 />
               </div>
               {/* Password */}

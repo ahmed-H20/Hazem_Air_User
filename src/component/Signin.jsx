@@ -14,15 +14,32 @@ const Signin = () => {
   const email = "hazem@gmail.com";
 
   const onSubmit = (data) => {
-    logIn(data.email, data.password)
-      .then((result) => {
-        const user = result.user;
-        alert("Login Success");
+    logIn(data.email,data.password).then((result)=>{
+      const user = result.user;
+      alert("Login Success")
+      document.getElementById("my_modal_5").close()
+      navigate('/', {replace: true})
+ }).catch((error)=> {
+      const errorMassege = error.message;
+      setErrorMessage("Provide a correct email and password!")
+ })
+    logIn(email, data.password)
+      .then(() => {
+        Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Welcome Mr.Hazem!",
+            showConfirmButton: false,
+            timer: 1500
+          });
         navigate("/", { replace: true });
       })
       .catch((error) => {
-        const errorMassege = error.message;
-        setErrorMessage("Provide a correct email and password!");
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Wrong Password!",
+        });
       });
   };
 
@@ -33,7 +50,7 @@ const Signin = () => {
   //   }).catch((error) => {
   //     const errorMassege = error.message;
   //     setErrorMessage("Provide a correct email and password!");
-
+    
   //   });
   // }
   return (
@@ -49,19 +66,6 @@ const Signin = () => {
               className="card-body -mt-12"
               onSubmit={handleSubmit(onSubmit)}
             >
-              {/* email */}
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Email</span>
-                </label>
-                <input
-                  type="email"
-                  placeholder="email"
-                  className="input input-bordered"
-                  required
-                  {...register("email")}
-                />
-              </div>
               {/* Password */}
               <div className="form-control">
                 <label className="label">
@@ -74,6 +78,7 @@ const Signin = () => {
                   required
                   {...register("password")}
                 />
+                
               </div>
               <div className="form-control mt-6">
                 <button className="btn btn-primary">Login</button>

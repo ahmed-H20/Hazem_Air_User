@@ -14,15 +14,6 @@ const Signin = () => {
   const email = "hazem@gmail.com";
 
   const onSubmit = (data) => {
-    logIn(data.email,data.password).then((result)=>{
-      const user = result.user;
-      alert("Login Success")
-      document.getElementById("my_modal_5").close()
-      navigate('/', {replace: true})
- }).catch((error)=> {
-      const errorMassege = error.message;
-      setErrorMessage("Provide a correct email and password!")
- })
     logIn(email, data.password)
       .then(() => {
         Swal.fire({

@@ -31,7 +31,7 @@ import UpdateClient from "../dashboard/admin/UpdateClient";
         {
           path: "/update-clint/:id",
           element: <UpdateClient/>,
-          loader: ({params}) => fetch(`http://localhost:3000/users/${params.id}`)
+          loader: ({params}) => fetch(`https://hazem-air-server.vercel.app/users/${params.id}`)
         }
       ]       
     },

@@ -11,19 +11,13 @@ const Signin = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
 
-  const email = "hazem@company.com";
+  const email = "hazem@gmail.com";
 
   const onSubmit = (data) => {
-    logIn(email, data.password)
+    logIn(data.email, data.password)
       .then((result) => {
         const user = result.user;
-        Swal.fire({
-            position: "center",
-            icon: "success",
-            title: "Welcome Mr.Hazem!",
-            showConfirmButton: false,
-            timer: 1500
-          });
+        alert("Login Success");
         navigate("/", { replace: true });
       })
       .catch((error) => {
@@ -39,7 +33,7 @@ const Signin = () => {
   //   }).catch((error) => {
   //     const errorMassege = error.message;
   //     setErrorMessage("Provide a correct email and password!");
-    
+
   //   });
   // }
   return (
@@ -55,6 +49,19 @@ const Signin = () => {
               className="card-body -mt-12"
               onSubmit={handleSubmit(onSubmit)}
             >
+              {/* email */}
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Email</span>
+                </label>
+                <input
+                  type="email"
+                  placeholder="email"
+                  className="input input-bordered"
+                  required
+                  {...register("password")}
+                />
+              </div>
               {/* Password */}
               <div className="form-control">
                 <label className="label">
@@ -67,7 +74,6 @@ const Signin = () => {
                   required
                   {...register("password")}
                 />
-                
               </div>
               <div className="form-control mt-6">
                 <button className="btn btn-primary">Login</button>

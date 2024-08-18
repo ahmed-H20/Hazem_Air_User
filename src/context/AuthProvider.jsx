@@ -46,7 +46,7 @@ import {
     }, []);
   
     useEffect(() => {
-      fetch("http://localhost:3000/users")
+      fetch("https://hazem-air-server.vercel.app/users")
         .then((res) => res.json())
         .then((data) => {
           setClint(data)

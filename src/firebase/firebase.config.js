@@ -14,7 +14,6 @@ const firebaseConfig = {
   messagingSenderId: process.env.MESSAGINGSENDERID,
   appId: process.env.APPID
 };
-console.log(firebaseConfig)
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 export default app;
